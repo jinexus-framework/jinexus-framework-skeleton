@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>JiNexus Framework Skeleton</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link href="<?php echo $this->basePath('asset/img/favicon.ico'); ?>" rel="shortcut icon" type="image/x-icon" />
+        <link href="<?php echo $this->basePath('asset/lib/normalize/8.0.0/normalize.css'); ?>" media="screen" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $this->basePath('asset/lib/bootstrap/4.0.0/css/bootstrap.min.css'); ?>" media="screen" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $this->basePath('asset/lib/fontawesome/5.1.0/css/all.css'); ?>" media="screen" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" media="screen" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $this->basePath('asset/css/core.css'); ?>" media="screen" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <?php echo $this->render('layout/header'); ?>
+        <?php echo $this->content(); ?>
+        <?php echo $this->render('layout/footer'); ?>
+        <script type="text/javascript" src="<?php echo $this->basePath('asset/lib/jquery/3.3.1/jquery.min.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo $this->basePath('asset/lib/bootstrap/4.0.0/js/bootstrap.min.js'); ?>"></script>
+    </body>
+</html>

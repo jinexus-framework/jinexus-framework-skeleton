@@ -1,0 +1,45 @@
+{
+    "name": "jinexus-framework/jinexus-framework-skeleton",
+    "type": "project",
+    "description": "JiNexus Framework Skeleton",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "jinexus",
+        "framework",
+        "mvc",
+        "jf"
+    ],
+    "homepage": "http://framework.jinexus.com",
+    "authors": [
+        {
+            "name": "Jimvirle E. Calago",
+            "email": "jimvirle@gmail.com"
+        }
+    ],
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^5.6 || ^7.0",
+        "jinexus-framework/jinexus-mvc": "^1.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Application\\": "module/Application/src/",
+            "Portal\\": "module/Portal/src/",
+            "JiNexus\\Config\\": "vendor/jinexus-framework/jinexus-config/src/",
+            "JiNexus\\ModuleManager\\": "vendor/jinexus-framework/jinexus-module-manager/src/",
+            "JiNexus\\Mvc\\": "vendor/jinexus-framework/jinexus-mvc/src/",
+            "JiNexus\\Route\\": "vendor/jinexus-framework/jinexus-route/src/",
+            "JiNexus\\Http\\": "vendor/jinexus-framework/jinexus-http/src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Application\\": "module/Application/test/",
+            "Portal\\": "module/Portal/test/"
+        }
+    },
+    "scripts": {
+        "serve": "php -S 0.0.0.0:8080 -t public public/index.php"
+    }
+}
