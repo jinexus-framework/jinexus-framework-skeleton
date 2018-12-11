@@ -1,0 +1,11 @@
+# Convert compiled assets from github statistics.
+*.phtml linguist-language=PHP
+
+# Remove compiled assets from github statistics.
+public/asset/lib/* linguist-vendored
+
+# Do not try and merge these files
+composer.lock -diff
+
+# Ignore files with “export-ignore”.
+.gitattributes export-ignore
