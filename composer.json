@@ -40,6 +40,6 @@
         }
     },
     "scripts": {
-        "serve": "php -S 0.0.0.0:8080 -t public public/index.php"
+        "serve": "php -S localhost:8000 -t public"
     }
 }
