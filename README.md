@@ -39,7 +39,7 @@ $ chmod -R g+rwX path/to/my-project
 ## Start a Web Server
 The Skeleton creates a full application structure that's ready-to-go when complete. You can test it out using [built-in web server](http://php.net/manual/en/features.commandline.webserver.php).
 
-From the project root directory, execute the following: 
+From the project root directory, execute either of the following command:
 
 #### Using Composer
 
@@ -47,13 +47,13 @@ From the project root directory, execute the following:
 $ composer run --timeout=0 serve
 ```
 
-This starts up a web server on localhost port 8080; browse to http://localhost:8080/ to see if your application responds correctly!
+#### Using PHP
 
 ```bash
-$ php -S localhost:8000
+$ php -S localhost:8000 -t public
 ```
 
-This starts up a web server on localhost port 8000; browse to http://localhost:8000/ to see if your application responds correctly! 
+Either of the following command—this will starts up a web server on localhost port 8000; browse to [http://localhost:8000](http://localhost:8000) to see if your application responds correctly!
 
 ---
 
