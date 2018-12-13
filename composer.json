@@ -24,19 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Application\\": "module/Application/src/",
-            "Portal\\": "module/Portal/src/",
-            "JiNexus\\Config\\": "vendor/jinexus-framework/jinexus-config/src/",
-            "JiNexus\\ModuleManager\\": "vendor/jinexus-framework/jinexus-module-manager/src/",
-            "JiNexus\\Mvc\\": "vendor/jinexus-framework/jinexus-mvc/src/",
-            "JiNexus\\Route\\": "vendor/jinexus-framework/jinexus-route/src/",
-            "JiNexus\\Http\\": "vendor/jinexus-framework/jinexus-http/src/"
+            "Application\\": "module/Application/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Application\\": "module/Application/test/",
-            "Portal\\": "module/Portal/test/"
+            "Application\\": "module/Application/test/"
         }
     },
     "scripts": {
