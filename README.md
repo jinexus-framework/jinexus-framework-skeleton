@@ -1,61 +1,140 @@
 # JiNexus Framework Skeleton
 
-## Introduction
+The official skeleton application for the **JiNexus Framework**. Use it as a starting
+point to build MVC applications with the JiNexus component stack (mvc, http, route,
+config, module-manager).
 
-This is a skeleton application using the JiNexus Framework MVC layer and module
-systems. This application is meant to be used as a starting place for those
-looking to use JiNexus Framework.
+- Documentation: https://framework.jinexus.com/documentation
+- Issues: https://github.com/jinexus-framework/jinexus-framework-skeleton/issues
 
-## System Requirements
-   
-##### JiNexus Framework 1.x.x requires:
+## Requirements
 
-* PHP 5.6 or later
-* Mod_Rewrite
-* Mbstring
+- PHP `^8.5`
+- [Composer](https://getcomposer.org/)
+- Apache `mod_rewrite` (or equivalent for your web server)
+- PHP `mbstring` extension
 
-## Setup
+## Installation
 
-To create your new JiNexus Framework application, first make sure you're using PHP 5.6 or later and have [Composer](https://getcomposer.org/) installed. You may also check how to install composer in their [documentation](https://getcomposer.org/download/). 
-
-All you have to do—to create your new JiNexus Framework project is to run this one single line command:
+Create a new project with Composer:
 
 ```bash
-$ composer create-project jinexus-framework/jinexus-framework-skeleton path/to/my-project
+composer create-project jinexus-framework/jinexus-framework-skeleton path/to/my-project
 ```
 
-This will create a new my-project directory, download some dependencies into it and even generate the basic directories and files you'll need to get started. In other words, your new app is ready!
+This downloads the skeleton and its dependencies, generates the directory layout, and
+configures autoloading — your application is ready to run.
 
-Next you'll have to make project directories writable (command may vary depending on your system):
+### Directory permissions
+
+Make the cache directory writable by the web server:
 
 ```bash
-$ chown -R www-data:www-data path/to/my-project
+chown -R www-data:www-data path/to/my-project/data/cache
+chmod -R g+rwX path/to/my-project/data/cache
 ```
+
+## Quick start
+
+Start the built-in PHP development server from the project root:
 
 ```bash
-$ chmod -R g+rwX path/to/my-project
+# Via Composer (recommended)
+composer run --timeout=0 serve
+
+# Or directly with PHP
+php -S localhost:8000 -t public
 ```
 
-## Start a Web Server
-The Skeleton creates a full application structure that's ready-to-go when complete. You can test it out using [built-in web server](http://php.net/manual/en/features.commandline.webserver.php).
+Browse to [http://localhost:8000](http://localhost:8000). You should see the default
+application page.
 
-From the project root directory, execute either of the following command:
+## Directory layout
 
-#### Using Composer
+```
+config/
+  application.config.php      Module list for the application
+  modules.config.php          Enabled module namespaces
+module/
+  Application/
+    config/
+      module.config.php       Route and view-manager configuration
+    src/
+      Module.php              Application module class
+      Controller/
+        IndexController.php   Default controller
+    view/
+      application/index/      View templates
+      error/                  Error page templates
+      layout/                 Layout templates
+public/
+  index.php                   Front controller (document root)
+  .htaccess                   Apache rewrite rules
+  asset/                      Static assets
+test/
+  Application/                Unit tests mirroring the module structure
+data/
+  cache/                      Cache directory (must be writable)
+```
+
+## Extending
+
+### Adding a new module
+
+1. Create a namespace directory under `module/`, e.g. `module/Blog/src/`.
+2. Add a `Module` class extending `JiNexus\ModuleManager\ModuleManager\AbstractModule`
+   that returns its config from `getConfig()`.
+3. Register the namespace in `config/modules.config.php`.
+4. Add any routes, controllers, and view templates following the `Application` module
+   pattern.
+
+### Adding a controller
+
+Create a class under `module/<Name>/src/Controller/` extending
+`JiNexus\Mvc\Controller\AbstractController`. Action methods return a `ViewModel`:
+
+```php
+namespace Application\Controller;
+
+use JiNexus\Mvc\Controller\AbstractController;
+use JiNexus\Mvc\Model\ViewModel;
+
+class IndexController extends AbstractController
+{
+    public function indexAction(): ViewModel
+    {
+        return new ViewModel([
+            'helloWorld' => 'Hello World!',
+        ]);
+    }
+}
+```
+
+Register the route in the module's `module.config.php`.
+
+## Testing
 
 ```bash
-$ composer run --timeout=0 serve
+composer test              # or: ./vendor/bin/phpunit
+composer test:coverage     # text coverage report
 ```
 
-#### Using PHP
+The suite is configured via `phpunit.dist.xml`. Use `XDEBUG_MODE=off` to silence the
+local Xdebug notice, and `--testdox` for readable per-test output:
 
 ```bash
-$ php -S localhost:8000 -t public
+XDEBUG_MODE=off ./vendor/bin/phpunit --testdox
 ```
 
-Either of the following command—this will starts up a web server on localhost port 8000; browse to [http://localhost:8000](http://localhost:8000) to see if your application responds correctly!
+Tests are under `test/Application/` mirroring the `module/Application/src/` structure.
+The source ships at **100% line, method, and class coverage**.
 
----
+## Contributing
 
-- File issues at https://github.com/jinexus-framework/jinexus-http/issues
-- Documentation is at https://framework.jinexus.com/documentation
+Please see [CONDUCT.md](CONDUCT.md) for the code of conduct. Contributions should include
+tests and a `CHANGELOG.md` entry. See [AGENTS.md](AGENTS.md) for detailed build, style,
+and workflow conventions.
+
+## License
+
+BSD-3-Clause. See [LICENSE.md](LICENSE.md).

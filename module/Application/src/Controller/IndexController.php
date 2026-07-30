@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace Application\Controller;
 
 use JiNexus\Mvc\Controller\AbstractController;
@@ -13,12 +16,11 @@ class IndexController extends AbstractController
     /**
      * @return ViewModel
      */
-    public function indexAction()
+    public function indexAction(): ViewModel
     {
         // Pass a variable to the view
         return new ViewModel([
-            'helloWorld' => 'WTF! It Fucking Work!',
-            'omg' => 'OMG',
+            'helloWorld' => 'Hello World!',
         ]);
     }
 }

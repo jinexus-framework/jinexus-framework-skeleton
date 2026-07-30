@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use JiNexus\Mvc\Application\Factory\ApplicationFactory;
 
 error_reporting(E_ALL);

@@ -1,8 +1,11 @@
-.idea/
-.vagrant/
-vendor/
+/vendor/
+/.vagrant/
+/.idea/
+/.vscode/
+/.fleet/
+/.nova/
+/.zed/
 config/development.config.php
-data/cache/*
-!data/cache/.gitkeep
-phpunit.xml
+/phpunit.xml
+/.phpunit.cache/
 composer.phar

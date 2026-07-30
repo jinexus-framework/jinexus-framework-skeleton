@@ -9,7 +9,7 @@
         "mvc",
         "jf"
     ],
-    "homepage": "http://framework.jinexus.com",
+    "homepage": "https://github.com/jinexus-framework/jinexus-framework-skeleton",
     "authors": [
         {
             "name": "Jimvirle E. Calago",
@@ -19,8 +19,11 @@
     "prefer-stable": true,
     "minimum-stability": "dev",
     "require": {
-        "php": "^5.6 || ^7.0",
-        "jinexus-framework/jinexus-mvc": "^1.0.0"
+        "php": "^8.5",
+        "jinexus-framework/jinexus-mvc": "^1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^13.2"
     },
     "autoload": {
         "psr-4": {
@@ -29,10 +32,30 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Application\\": "module/Application/test/"
+            "Application\\Test\\": "test/Application/"
         }
     },
+    "config": {
+        "sort-packages": true
+    },
     "scripts": {
-        "serve": "php -S localhost:8000 -t public"
+        "serve": "php -S localhost:8000 -t public",
+        "test": "phpunit",
+        "test:coverage": [
+            "@putenv XDEBUG_MODE=coverage",
+            "phpunit --coverage-text"
+        ],
+        "test:testdox": "phpunit --testdox"
+    },
+    "scripts-descriptions": {
+        "serve": "Start the built-in PHP web server for development.",
+        "test": "Run the PHPUnit test suite.",
+        "test:coverage": "Run the test suite and print a text coverage report.",
+        "test:testdox": "Run the test suite with readable testdox output."
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.1.x-dev"
+        }
     }
 }
